@@ -31,7 +31,7 @@ avgTotal  = 0
 
 # Set path to CSV
 #csvPath = os.path.join(r"Resources", "budget_data.csv")
-csvPath = r"C:\Users\unhea\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyBank\Resources\budget_data.csv"
+csvPath = r"C:\Users\spdow\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyBank\Resources\budget_data.csv"
 
 # Open CSV
 with open(csvPath, newline="") as csvFile:
@@ -45,7 +45,7 @@ with open(csvPath, newline="") as csvFile:
   # Loop over the CSV
   for row in csvFile:
     # Clean up the values, concat, and add to csvData list
-    csvData.append(int(row.split(",")[1]))
+    csvData.append([row.split(",")[0],int(row.split(",")[1])])
     # Add values together to get net result
     netTotal = netTotal + int(row.split(",")[1])
 
@@ -53,9 +53,9 @@ with open(csvPath, newline="") as csvFile:
 row = 1
 while row < len(csvData):
   # Get the current value and subtract from the previous value, unless the row is the first (0)
-  avgTotal = avgTotal + int(csvData[row])-int(csvData[row-1])
+  avgTotal = avgTotal + int(csvData[row][1])-int(csvData[row-1][1])
   # Append the change amount to the changes list for value evaluation
-  changes.append(int(csvData[row])-int(csvData[row-1]))
+  changes.append([str(csvData[row][0]),int(csvData[row][1])-int(csvData[row-1][1])])
   row += 1
 
 #print(avgTotal)
@@ -67,24 +67,27 @@ totalMonths = len(csvData)
 avgChange = avgTotal / (totalMonths-1)
 
 largestChange   = max(changes)
-with open(csvPath, newline="") as csvFile:
-  next(csvFile)
-  for row in csvFile:
-    if int(largestChange) == int(row.split(",")[1]):
-      print(row.split(",")[0])
-    else:
-      print("Not Found")
+
 
 smallestChange  = min(changes)
 
+topValue = 0
+botValue = 0
+botMonth = ""
+topMonth = ""
 
+for currentRow in changes:
+  if int(topValue) < int(currentRow[1]):
+    topValue = currentRow[1]
+    topMonth = currentRow[0]
+  elif botValue > currentRow[1]:
+    botValue = currentRow[1]
+    botMonth = currentRow[0]
 
 print('Financial Analysis')
 print('----------------------------')
 print(f'Total Months: {totalMonths}')
-print(f'Average Change: {avgChange}')
-print(f'Greatest Increase in Profits: {largestChange}')
-print(f'Greatest Decrease in Profits: {smallestChange}')
-
-
-
+print(f'Total: ${netTotal}')
+print(f'Average Change: ${round(avgChange,2)}')
+print(f'Greatest Increase in Profits: {topMonth} (${topValue})')
+print(f'Greatest Decrease in Profits: {botMonth} (${botValue})')
