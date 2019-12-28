@@ -94,6 +94,7 @@ for candidate in candidates:
 outFile.write("---------------------\n")
 outFile.write(f"Winner: {winner}\n")
 outFile.write("---------------------")
+outFile.close()
 
 print("---------------------")
 print(f"Winner: {winner}")
