@@ -33,6 +33,8 @@ avgTotal  = 0
 #csvPath = os.path.join(r"Resources", "budget_data.csv")
 csvPath = r"C:\Users\spdow\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyBank\Resources\budget_data.csv"
 
+outFile = open(r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBank\Resources\financial_analysis.csv","w+")
+
 # Open CSV
 with open(csvPath, newline="") as csvFile:
   # Set header row
@@ -91,3 +93,11 @@ print(f'Total: ${netTotal}')
 print(f'Average Change: ${round(avgChange,2)}')
 print(f'Greatest Increase in Profits: {topMonth} (${topValue})')
 print(f'Greatest Decrease in Profits: {botMonth} (${botValue})')
+
+outFile.write('Financial Analysis\n')
+outFile.write('----------------------------\n')
+outFile.write(f'Total Months: {totalMonths}\n')
+outFile.write(f'Total: ${netTotal}\n')
+outFile.write(f'Average Change: ${round(avgChange,2)}\n')
+outFile.write(f'Greatest Increase in Profits: {topMonth} (${topValue})\n')
+outFile.write(f'Greatest Decrease in Profits: {botMonth} (${botValue})\n')
