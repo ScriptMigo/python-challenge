@@ -33,7 +33,7 @@ avgTotal  = 0
 #csvPath = os.path.join(r"Resources", "budget_data.csv")
 csvPath = r"C:\Users\spdow\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyBank\Resources\budget_data.csv"
 
-outFile = open(r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBank\Resources\financial_analysis.csv","w+")
+outFile = open(r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBank\financial_analysis.csv","w+")
 
 # Open CSV
 with open(csvPath, newline="") as csvFile:
@@ -69,8 +69,6 @@ totalMonths = len(csvData)
 avgChange = avgTotal / (totalMonths-1)
 
 largestChange   = max(changes)
-
-
 smallestChange  = min(changes)
 
 topValue = 0
