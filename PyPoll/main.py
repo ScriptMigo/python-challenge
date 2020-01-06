@@ -31,15 +31,18 @@
 import os
 import csv
 
-# Open text file for writing
-outFile = open(r"C:\temp\MyFile.txt","w+") 
+# Set root path
+path = 'python-challenge'
+
+# Set path to Data CSV
+csvPath = os.path.join(path, "PyPoll/Resources", "election_data.csv")
+
+# Set path to output CSV
+outFilePath = os.path.join(path, "PyPoll", "election_results.csv")
+outFile = open(outFilePath,"w+")
 
 # Define variables
 candidates = []
-
-# Set path to CSV
-#csvPath = os.path.join(r"Resources", "election_data.csv")
-csvPath = r"C:\Users\spdow\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyPoll\Resources\election_data.csv"
 
 # Open CSV
 with open(csvPath, newline="") as csvRows:

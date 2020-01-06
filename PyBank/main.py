@@ -29,11 +29,15 @@ import csv
 netTotal  = 0
 avgTotal  = 0
 
-# Set path to CSV
-#csvPath = os.path.join(r"Resources", "budget_data.csv")
-csvPath = r"C:\Users\spdow\Documents\Bootcamp\GT-ATL-DATA-PT-12-2019-U-C\Homework\03-Python\Instructions\PyBank\Resources\budget_data.csv"
+# Set root path
+path = 'python-challenge'
 
-outFile = open(r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBank\financial_analysis.csv","w+")
+# Set path to Data CSV
+csvPath = os.path.join(path, "PyBank/Resources", "budget_data.csv")
+
+# Set path to output CSV
+outFilePath = os.path.join(path, "PyBank", "financial_analysis.csv")
+outFile = open(outFilePath,"w+")
 
 # Open CSV
 with open(csvPath, newline="") as csvFile:

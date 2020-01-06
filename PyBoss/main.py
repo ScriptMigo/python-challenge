@@ -10,12 +10,20 @@ states = (['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['
     ['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],
     ['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VI','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconson'],['WY','Wyoming'])
 
-# Set path to CSV
-#csvPath = os.path.join(r"Resources", "employee_data.csv")
-csvPath = r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBoss\Resources\employee_data.csv"
-#csvPath = os.path.join(r"Resources", "new_employee_data.csv")
-outFile = open(r"C:\Users\spdow\Documents\Bootcamp\My Repositories\python-challenge\PyBoss\Resources\new_employee_data.csv","w+")
+
+# Set root path
+path = 'python-challenge'
+
+# Set path to Data CSV
+csvPath = os.path.join(path, "PyBoss/Resources", "employee_data.csv")
+
+# Set path to output CSV
+outFilePath = os.path.join(path, "PyBoss", "new_employee_data.csv")
+outFile = open(outFilePath,"w+")
+
+# Create output file header
 outFile.write("Emp ID,First Name,Last Name,DOB,SSN,State\n")
+
 # Open CSV
 with open(csvPath, newline="") as csvRows:
     # Set header row
